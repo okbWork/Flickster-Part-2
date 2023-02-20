@@ -36,9 +36,9 @@ class ArticleAdapter(private val context: Context, private val articles: List<Ar
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
 
-        private val mediaImageView = itemView.findViewById<ImageView>(R.id.mediaImage)
-        private val titleTextView = itemView.findViewById<TextView>(R.id.mediaTitle)
-        private val abstractTextView = itemView.findViewById<TextView>(R.id.mediaAbstract)
+        private val mediaImageView = itemView.findViewById<ImageView>(R.id.moviePoster)
+        private val titleTextView = itemView.findViewById<TextView>(R.id.movieTitle)
+        private val abstractTextView = itemView.findViewById<TextView>(R.id.movieOverview)
 
         init {
             itemView.setOnClickListener(this)
@@ -46,8 +46,8 @@ class ArticleAdapter(private val context: Context, private val articles: List<Ar
 
         // TODO: Write a helper method to help set up the onBindViewHolder method
         fun bind(article: Article) {
-            titleTextView.text = article.headline?.main
-            abstractTextView.text = article.abstract
+            titleTextView.text = article.title
+            abstractTextView.text = article.overview
 
             Glide.with(context)
                 .load(article.mediaImageUrl)

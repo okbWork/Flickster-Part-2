@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import org.w3c.dom.Text
+import kotlin.math.roundToLong
 
 const val ARTICLE_EXTRA = "ARTICLE_EXTRA"
 private const val TAG = "ArticleAdapter"
@@ -38,7 +40,12 @@ class ArticleAdapter(private val context: Context, private val articles: List<Ar
 
         private val mediaImageView = itemView.findViewById<ImageView>(R.id.moviePoster)
         private val titleTextView = itemView.findViewById<TextView>(R.id.movieTitle)
+        /*
         private val abstractTextView = itemView.findViewById<TextView>(R.id.movieOverview)
+        private val languageTextView = itemView.findViewById<TextView>(R.id.movieLanguage)
+        private val voteCountTextView = itemView.findViewById<TextView>(R.id.voteCount)
+        */
+        private val voteAverageTextView = itemView.findViewById<TextView>(R.id.voteAverage)
 
         init {
             itemView.setOnClickListener(this)
@@ -47,7 +54,13 @@ class ArticleAdapter(private val context: Context, private val articles: List<Ar
         // TODO: Write a helper method to help set up the onBindViewHolder method
         fun bind(article: Article) {
             titleTextView.text = article.title
+            /*
             abstractTextView.text = article.overview
+            languageTextView.text = article.language
+            voteCountTextView.text = "Based off of " + article.voteCount.toString() + " Votes"
+            */
+            voteAverageTextView.text = String.format("%.2f",article.voteAverage) + "/10"
+
 
             Glide.with(context)
                 .load(article.mediaImageUrl)

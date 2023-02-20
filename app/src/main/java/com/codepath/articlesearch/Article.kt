@@ -23,6 +23,12 @@ data class Article(
     val title: String?,
     @SerialName("poster_path")
     val multimedia: String?,
+    @SerialName("original_language")
+    val language: String?,
+    @SerialName("vote_average")
+    val voteAverage: Double?,
+    @SerialName("vote_count")
+    val voteCount: Int?,
 
     ): java.io.Serializable {
     val mediaImageUrl = "https://image.tmdb.org/t/p/w500${multimedia}"
